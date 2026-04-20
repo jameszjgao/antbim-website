@@ -12,6 +12,30 @@ npm run dev
 
 浏览器打开 `http://localhost:3000`。
 
+## 推送到 GitHub
+
+本仓库已配置远程（若账号或仓库名不同，请自行修改）：
+
+```bash
+git remote -v
+# origin  https://github.com/jameszjgao/antbim-website.git
+```
+
+**方式 A — 网页新建空仓库后推送**
+
+1. 在 GitHub 新建仓库 **`antbim-website`**（不要勾选 README / .gitignore，保持空仓库）。
+2. 执行：`git push -u origin main`
+
+**方式 B — 使用 GitHub CLI 创建并推送**
+
+```bash
+gh auth login
+cd antbim-website
+gh repo create antbim-website --public --source=. --remote=origin --push
+```
+
+若远程已存在且仅缺仓库，也可用：`gh repo create antbim-website --public` 再在仓库页按提示推送。
+
 ## 构建
 
 ```bash
