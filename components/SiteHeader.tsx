@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
 import { navPrimary, siteMeta } from "@/lib/site-content";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { antbimAsset } from "@/lib/antbim-assets";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -27,11 +29,16 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-sm font-bold text-ink-950 shadow-md dark:shadow-glow">
-            蚂
-          </span>
-          <div className="leading-tight">
+        <Link href="/" className="flex items-center gap-2.5">
+          <Image
+            src={antbimAsset.logoHeader}
+            alt="蚂蚁分工"
+            width={100}
+            height={86}
+            className="h-9 w-auto object-contain object-left"
+            priority
+          />
+          <div className="hidden leading-tight sm:block">
             <div className="text-sm font-semibold tracking-wide text-slate-900 dark:text-white">蚂蚁分工</div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400">项目管理系统</div>
           </div>
@@ -55,7 +62,13 @@ export function SiteHeader() {
             href={`tel:${siteMeta.phone.replace(/-/g, "")}`}
             className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-700 transition hover:border-brand-400/50 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-brand-500/40 dark:hover:text-white"
           >
-            <Phone className="h-3.5 w-3.5 text-brand-600 dark:text-brand-400" aria-hidden />
+            <Image
+              src={antbimAsset.iconPhone}
+              alt=""
+              width={20}
+              height={20}
+              className="h-3.5 w-3.5 object-contain opacity-90 dark:opacity-100"
+            />
             {siteMeta.phone}
           </a>
           <a
@@ -104,7 +117,7 @@ export function SiteHeader() {
               href={`tel:${siteMeta.phone.replace(/-/g, "")}`}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 py-2 text-sm dark:border-white/10"
             >
-              <Phone className="h-4 w-4 text-brand-600 dark:text-brand-400" />
+              <Image src={antbimAsset.iconPhone} alt="" width={18} height={18} className="object-contain" />
               {siteMeta.phone}
             </a>
             <a

@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { Phone } from "lucide-react";
 import { footerLinks, siteMeta } from "@/lib/site-content";
+import { antbimAsset } from "@/lib/antbim-assets";
 
 export function SiteFooter() {
   return (
@@ -10,10 +12,14 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-base font-bold text-ink-950">
-                蚂
-              </span>
+            <div className="flex items-center gap-3">
+              <Image
+                src={antbimAsset.logoHeader}
+                alt="蚂蚁分工"
+                width={100}
+                height={86}
+                className="h-11 w-auto object-contain object-left"
+              />
               <div>
                 <div className="text-lg font-semibold text-slate-900 dark:text-white">蚂蚁分工</div>
                 <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
@@ -51,7 +57,9 @@ export function SiteFooter() {
           <span>
             Copyright © {siteMeta.company} 版权所有 · {siteMeta.icp}
           </span>
-          <span className="text-slate-400 dark:text-slate-600">本页为设计重制演示站点，非官方托管。</span>
+          <span className="max-w-md text-slate-400 dark:text-slate-600">
+            本页为重设计演示；配图与 Logo 来自蚂蚁分工官网公开 CDN，已镜像至本地仅供展示，正式商用请取得授权并替换素材。
+          </span>
         </div>
       </div>
     </footer>

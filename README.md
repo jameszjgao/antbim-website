@@ -86,3 +86,4 @@ VERCEL_TOKEN=你的token npx vercel deploy --prod --yes --token "$VERCEL_TOKEN"
 
 - 文案与模块对齐官网公开介绍（产品、解决方案、案例、资讯、ERP、服务承诺与联系方式等）；**电话与备案号**等与公开页一致，便于替换为正式运营物料。
 - 顶栏「注册 / 登录」与底部按钮为占位，接入真实认证或 CRM 表单即可。
+- **配图与 Logo**：`public/assets/antbim/` 内为从官网页面 CDN 镜像的轮播图、功能配图、案例图、ERP 示意图、顶栏 Logo 与电话图标等（见 `lib/antbim-assets.ts`）。正式商用请取得授权或替换为自有素材。
