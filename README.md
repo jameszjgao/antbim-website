@@ -45,12 +45,20 @@ npm run start
 
 ## 发布到 Vercel
 
-### 方式 A — 连接 GitHub（推荐，可自动部署）
+### 方式 A — 从 GitHub 发布（推荐，Push 即自动部署）
 
-1. 先将本仓库推送到 GitHub（见上文「推送到 GitHub」）。
-2. 登录 [Vercel Dashboard](https://vercel.com/dashboard) → **Add New…** → **Project** → **Import** 你的 `antbim-website` 仓库。
-3. Framework 选 **Next.js**，**Root Directory** 若整库就是本项目则留空；若在 monorepo 子目录则填 `antbim-website`。
-4. 点 **Deploy**。之后每次 `push` 到默认分支会自动构建。
+**前提**：代码已在 GitHub 上（见上文「推送到 GitHub」），默认分支一般为 **`main`**。
+
+1. 打开 [Vercel Dashboard](https://vercel.com/dashboard) → **Add New…** → **Project**。
+2. **Import Git Repository**：若首次使用，按提示安装 **Vercel GitHub App**，并勾选要授权的仓库（至少包含 **`antbim-website`**）。
+3. 选中仓库 → **Import**。在配置页确认：
+   - **Framework Preset**：**Next.js**（通常会自动识别）
+   - **Root Directory**：本仓库根目录就是 Next 项目 → 留空 **`.`**；若将来放进 monorepo 子目录，再填例如 **`antbim-website`**
+   - **Build Command** / **Output Directory**：保持默认即可（`next build` / Vercel 托管）
+4. 无需填环境变量即可部署本静态营销站 → 点 **Deploy**。
+5. 完成后在 **Project → Settings → Git** 可确认：**Production Branch**（一般为 `main`）、是否对 **Pull Request** 开启 **Preview Deployments**（默认开启则每个 PR 有预览 URL）。
+
+之后只需 **`git push origin main`**，Vercel 会自动生产部署；其他分支 / PR 可生成预览环境（以 Dashboard 设置为准）。
 
 ### 方式 B — Vercel CLI（本机一次性登录）
 
