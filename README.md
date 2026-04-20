@@ -1,6 +1,18 @@
 # antbim-website
 
-对 [蚂蚁分工官网](https://www.antbim.com/) 的**信息架构与公开文案**进行重组后的重设计落地页（Next.js 14 + Tailwind），便于部署到 Vercel。
+**蚂蚁分工**官方营销推广落地页（Next.js 14 + Tailwind），用于**后续直接替换** [antbim.com](https://www.antbim.com/) 现有站点。文案与信息架构依据官网公开 HTML（首页 meta、首屏模块、`/Solution/` 等）归纳并做**转化向**编排；`public/assets/antbim/` 内素材已由运营方授权使用。
+
+## 设计目标（营销优先）
+
+- **首屏**：信任角标 + 双段价值陈述 + **单卡片 ERP 能力图** + 主/次 CTA + 社会证明数据条。
+- **中段**：「为什么选择蚂蚁分工」三卡（体系落地 / 经营一体 / 规模验证）+ 官网品牌长文引用。
+- **产品**：八大模块网格，引导预约演示做组合讲解。
+- **能力纵深**：每块保留官网要点列表，并增加**成果导向**一句话（`marketingOutcome`）。
+- **强转化条**：预约演示 + 免费下载。
+- **项目 ERP** + **行业 / 场景标签云**（与解决方案页公开标签对齐）。
+- **客户案例**：补充「成果聚焦」一行。
+- **FAQ**：缩短决策链路。
+- **资讯与资源中心**：与官网导航名称一致的结构化入口 + 资讯列表节选。
 
 ## 本地开发
 
@@ -10,32 +22,6 @@ npm install
 npm run dev
 ```
 
-浏览器打开 `http://localhost:3000`。
-
-## 推送到 GitHub
-
-本仓库已配置远程（若账号或仓库名不同，请自行修改）：
-
-```bash
-git remote -v
-# origin  https://github.com/jameszjgao/antbim-website.git
-```
-
-**方式 A — 网页新建空仓库后推送**
-
-1. 在 GitHub 新建仓库 **`antbim-website`**（不要勾选 README / .gitignore，保持空仓库）。
-2. 执行：`git push -u origin main`
-
-**方式 B — 使用 GitHub CLI 创建并推送**
-
-```bash
-gh auth login
-cd antbim-website
-gh repo create antbim-website --public --source=. --remote=origin --push
-```
-
-若远程已存在且仅缺仓库，也可用：`gh repo create antbim-website --public` 再在仓库页按提示推送。
-
 ## 构建
 
 ```bash
@@ -43,47 +29,30 @@ npm run build
 npm run start
 ```
 
+## 推送到 GitHub
+
+```bash
+git remote -v
+git push -u origin main
+```
+
+（若远程未配置，见历史提交中的 GitHub 说明。）
+
 ## 发布到 Vercel
 
-### 方式 A — 从 GitHub 发布（推荐，Push 即自动部署）
+1. 仓库连接 Vercel → Import → Framework **Next.js** → Deploy。
+2. 将 **antbim.com** 的 DNS 指向 Vercel 提供的记录后，即可在 Vercel 中绑定生产域名并完成**替换原站**。
 
-**前提**：代码已在 GitHub 上（见上文「推送到 GitHub」），默认分支一般为 **`main`**。
+详见仓库内历史 README 中「从 GitHub 发布」分步说明。
 
-1. 打开 [Vercel Dashboard](https://vercel.com/dashboard) → **Add New…** → **Project**。
-2. **Import Git Repository**：若首次使用，按提示安装 **Vercel GitHub App**，并勾选要授权的仓库（至少包含 **`antbim-website`**）。
-3. 选中仓库 → **Import**。在配置页确认：
-   - **Framework Preset**：**Next.js**（通常会自动识别）
-   - **Root Directory**：本仓库根目录就是 Next 项目 → 留空 **`.`**；若将来放进 monorepo 子目录，再填例如 **`antbim-website`**
-   - **Build Command** / **Output Directory**：保持默认即可（`next build` / Vercel 托管）
-4. 无需填环境变量即可部署本静态营销站 → 点 **Deploy**。
-5. 完成后在 **Project → Settings → Git** 可确认：**Production Branch**（一般为 `main`）、是否对 **Pull Request** 开启 **Preview Deployments**（默认开启则每个 PR 有预览 URL）。
+## 替换原站前检查清单
 
-之后只需 **`git push origin main`**，Vercel 会自动生产部署；其他分支 / PR 可生成预览环境（以 Dashboard 设置为准）。
+- [ ] 将 `#cta` 区按钮与外链改为真实 **表单 / 企业微信 / CRM** 地址。
+- [ ] 资讯列表项链接到真实文章 URL（当前为展示型列表）。
+- [ ] 确认 **ICP、公司全称、电话** 与最新证照一致。
+- [ ] 按需接入 **百度统计 / 友盟 / GA** 与转化埋点。
 
-### 方式 B — Vercel CLI（本机一次性登录）
+## 素材与版权
 
-```bash
-cd antbim-website
-npx vercel login          # 浏览器完成授权
-npx vercel                # 首次：按提示 Link 到团队/项目
-npx vercel --prod         # 生产环境
-```
-
-首次 `npx vercel` 会问是否关联现有 Project；选创建新 Project 即可。生产域名形如 `https://antbim-website-xxx.vercel.app`（以 CLI 输出为准）。
-
-### 方式 C — 仅 Token（CI / 无浏览器环境）
-
-在 Vercel → **Account Settings** → **Tokens** 创建 Token，然后：
-
-```bash
-cd antbim-website
-VERCEL_TOKEN=你的token npx vercel deploy --prod --yes --token "$VERCEL_TOKEN"
-```
-
-（勿将 Token 提交进仓库；在 GitHub Actions 里用 **Secrets** 注入。）
-
-## 说明
-
-- 文案与模块对齐官网公开介绍（产品、解决方案、案例、资讯、ERP、服务承诺与联系方式等）；**电话与备案号**等与公开页一致，便于替换为正式运营物料。
-- 顶栏「注册 / 登录」与底部按钮为占位，接入真实认证或 CRM 表单即可。
-- **配图与 Logo**：顶栏与页脚使用 **`BrandLogo`**（橙底字标 +「蚂蚁分工」「项目管理系统」），与官网首屏识别一致；`public/assets/antbim/logo-header.jpg` 为 CMS 导出的横版标识，可作备用。首屏主图为 **`brand-hero-illustration.png`**（项目 ERP 辐射图），置于白底卡片内；案例区保留配图；`lib/antbim-assets.ts` 汇总路径。正式商用请取得授权或替换为自有素材。
+- `lib/antbim-assets.ts` 汇总本地路径；图源为原站 CDN 镜像文件。
+- 运营方已声明授权用于替换原站；对外发布前仍建议法务留存书面授权记录。

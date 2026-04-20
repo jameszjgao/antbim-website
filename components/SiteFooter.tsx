@@ -12,8 +12,9 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <BrandLogo size="footer" />
+            <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{siteMeta.company}旗下产品</p>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              灵巧便捷，协作高效。帮企业经营好源源不断的项目。
+              灵巧便捷，协作高效。{siteMeta.productName}助力项目型业务管理体系流程落地与业财一体化经营。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -45,9 +46,7 @@ export function SiteFooter() {
           <span>
             Copyright © {siteMeta.company} 版权所有 · {siteMeta.icp}
           </span>
-          <span className="max-w-md text-slate-400 dark:text-slate-600">
-            本页为重设计演示；配图与 Logo 来自蚂蚁分工官网公开 CDN，已镜像至本地仅供展示，正式商用请取得授权并替换素材。
-          </span>
+          <span className="text-slate-400 dark:text-slate-600">本站用于蚂蚁分工品牌推广与获客转化，素材与表述已由运营方授权。</span>
         </div>
       </div>
     </footer>

@@ -8,6 +8,7 @@ import {
   LineChart,
   ShieldCheck,
   Sparkles,
+  Target,
   Users2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -18,28 +19,24 @@ import {
   bottomStats,
   cases,
   erpSection,
+  faqItems,
   featureBlocks,
   heroHighlights,
+  heroPrimaryCopy,
+  heroSecondaryCopy,
+  heroSupportingLine,
+  industryTags,
+  midFunnelCta,
   news,
+  officialBrandStory,
   productModules,
+  scenarioTags,
   siteMeta,
+  solutionCopy,
   stats,
+  whyAntbim,
+  resourceHubItems,
 } from "@/lib/site-content";
-
-const solutionTiles = [
-  { title: "行业解决方案", desc: "制造、汽车装备、电子、项目型服务等多行业最佳实践。" },
-  { title: "场景解决方案", desc: "订单交付、研发制造、质量与合规、成本与利润等场景化打法。" },
-];
-
-const resourceHub = [
-  "资讯中心",
-  "功能实践",
-  "资料下载",
-  "PM 干货",
-  "企业动态",
-  "帮助中心",
-  "帮助手册",
-];
 
 export default function HomePage() {
   return (
@@ -68,8 +65,12 @@ export default function HomePage() {
             <h1 className="mt-5 max-w-4xl text-2xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-tight dark:text-white">
               蚂蚁分工 · 助力管理体系流程落地的项目管理系统
             </h1>
+            <p className="mt-2 text-sm font-medium text-brand-800 dark:text-brand-200">{heroSupportingLine}</p>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
-              帮企业经营好源源不断的项目：从商机到交付、从进度到成本、从质量风险到知识沉淀，一套平台覆盖项目型业务全链路。
+              {heroPrimaryCopy}
+            </p>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-500 sm:text-[15px] dark:text-slate-400">
+              {heroSecondaryCopy}
             </p>
 
             <div className="mt-8 rounded-2xl border border-slate-200/90 bg-white p-3 shadow-[0_12px_48px_-16px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-ink-900/90 dark:shadow-none sm:p-5 lg:p-6">
@@ -125,6 +126,31 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Why Antbim — 中段信任与差异化 */}
+        <section className="scroll-mt-20 border-t border-slate-200 bg-white py-14 dark:border-white/5 dark:bg-ink-950/40 sm:py-16">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400">为什么选择蚂蚁分工</p>
+            <h2 className="mt-2 max-w-3xl text-2xl font-semibold text-slate-900 dark:text-white">
+              易协云旗下项目管理系统，面向项目型业务经营与体系落地
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">{officialBrandStory}</p>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {whyAntbim.map((w) => (
+                <article
+                  key={w.title}
+                  className="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 dark:border-white/10 dark:bg-ink-900/50"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/15 text-brand-700 dark:text-brand-300">
+                    <Target className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-slate-900 dark:text-white">{w.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{w.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Product */}
         <section
           id="product"
@@ -137,8 +163,7 @@ export default function HomePage() {
                 覆盖项目经营全链路的能力矩阵
               </h2>
               <p className="mt-3 text-slate-600 dark:text-slate-400">
-                订单商务跟进、流程进度、料工费成本、预算利润、质量风险、企业资源、文档知识库与可插拔 JS
-                插件——全面用上蚂蚁分工公开介绍中的模块要点。
+                以下八大模块覆盖从订单到知识沉淀的全链路能力，可按企业阶段分步上线；预约演示可针对您的行业组合讲解。
               </p>
             </div>
 
@@ -190,6 +215,9 @@ export default function HomePage() {
                       <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-400">
                         {block.lead}
                       </p>
+                      <p className="mt-3 border-l-2 border-brand-400/80 pl-3 text-sm font-medium text-slate-800 dark:border-brand-500/60 dark:text-brand-100">
+                        {block.marketingOutcome}
+                      </p>
                     </div>
                     <span className="text-5xl font-bold tabular-nums text-slate-100 dark:text-white/[0.06]">
                       {String(idx + 1).padStart(2, "0")}
@@ -212,6 +240,30 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Mid funnel CTA */}
+        <section className="border-t border-slate-200 bg-gradient-to-r from-brand-500/[0.14] via-amber-50 to-brand-500/[0.08] py-12 dark:border-white/5 dark:from-brand-500/10 dark:via-ink-900 dark:to-ink-950 sm:py-14">
+          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6">
+            <div className="max-w-2xl">
+              <h2 className="text-xl font-semibold text-slate-900 dark:text-white">{midFunnelCta.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">{midFunnelCta.body}</p>
+            </div>
+            <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:shrink-0">
+              <a
+                href="#cta"
+                className="inline-flex items-center justify-center rounded-full bg-brand-500 px-6 py-2.5 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400"
+              >
+                预约演示
+              </a>
+              <a
+                href="#cta"
+                className="inline-flex items-center justify-center rounded-full border border-slate-800/15 bg-white/90 px-6 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+              >
+                免费下载
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ERP */}
         <section className="border-t border-slate-200 bg-gradient-to-b from-brand-500/[0.12] via-slate-50 to-slate-50 py-16 dark:border-white/5 dark:from-brand-500/10 dark:via-ink-950 dark:to-ink-950 sm:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -223,6 +275,7 @@ export default function HomePage() {
                 </div>
                 <h2 className="mt-4 text-2xl font-semibold text-slate-900 sm:text-3xl dark:text-white">{erpSection.title}</h2>
                 <p className="mt-4 text-base leading-relaxed text-slate-700 dark:text-slate-300">{erpSection.body}</p>
+                <p className="mt-3 text-sm font-medium text-brand-800 dark:text-brand-200">{erpSection.marketingHook}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {erpSection.ctas.map((c) => (
                     <a
@@ -264,20 +317,42 @@ export default function HomePage() {
           className="scroll-mt-20 border-t border-slate-200 bg-white py-16 dark:border-white/5 dark:bg-transparent sm:py-20"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="max-w-2xl">
+            <div className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400">解决方案</p>
               <h2 className="mt-2 text-2xl font-semibold text-slate-900 sm:text-3xl dark:text-white">行业 × 场景，双轴覆盖</h2>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+                与官网解决方案体系一致：先按行业锁定典型项目形态，再按场景配置流程、模板与看板，缩短从签约到上线的时间。
+              </p>
             </div>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {solutionTiles.map((s) => (
-                <div
-                  key={s.title}
-                  className="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 dark:border-white/10 dark:bg-ink-900/40"
-                >
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{s.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{s.desc}</p>
-                </div>
-              ))}
+            <div className="mt-10 grid gap-10 lg:grid-cols-2">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{solutionCopy.industryTitle}</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{solutionCopy.industryLead}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {industryTags.map((t) => (
+                    <li
+                      key={t}
+                      className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm dark:border-white/10 dark:bg-ink-900/60 dark:text-slate-200"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{solutionCopy.scenarioTitle}</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{solutionCopy.scenarioLead}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {scenarioTags.map((t) => (
+                    <li
+                      key={t}
+                      className="rounded-full border border-brand-500/25 bg-brand-500/10 px-3 py-1 text-xs font-medium text-amber-950 dark:text-brand-100"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -295,7 +370,7 @@ export default function HomePage() {
                   超过 2000 家企业客户成功案例
                 </h2>
                 <p className="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-400">
-                  成功经验的例证，用户真实的声音（节选官网公开案例表述）。
+                  真实客户在不同行业与场景下的落地节选，用于评估与您企业的匹配度；完整案例库可在对接后获取。
                 </p>
               </div>
               <a
@@ -327,9 +402,36 @@ export default function HomePage() {
                     </span>
                     <h3 className="mt-4 text-base font-semibold leading-snug text-slate-900 dark:text-white">{c.title}</h3>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{c.excerpt}</p>
-                    <span className="mt-6 text-xs text-slate-400 dark:text-slate-600">客户案例</span>
+                    <p className="mt-3 text-xs font-medium text-brand-800 dark:text-brand-200">成果聚焦：{c.outcome}</p>
+                    <span className="mt-4 text-xs text-slate-400 dark:text-slate-600">客户案例</span>
                   </div>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="border-t border-slate-200 bg-slate-50 py-14 dark:border-white/5 dark:bg-ink-900/30 sm:py-16">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400">常见问题</p>
+            <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">购买与落地前，客户最常问的几件事</h2>
+            <div className="mt-8 space-y-3">
+              {faqItems.map((item) => (
+                <details
+                  key={item.q}
+                  className="group rounded-xl border border-slate-200 bg-white open:shadow-sm dark:border-white/10 dark:bg-ink-950/50"
+                >
+                  <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium text-slate-900 marker:content-none dark:text-white [&::-webkit-details-marker]:hidden">
+                    <span className="flex items-center justify-between gap-2">
+                      {item.q}
+                      <span className="text-slate-400 transition group-open:rotate-180">▼</span>
+                    </span>
+                  </summary>
+                  <p className="border-t border-slate-100 px-4 pb-4 pt-2 text-sm leading-relaxed text-slate-600 dark:border-white/5 dark:text-slate-400">
+                    {item.a}
+                  </p>
+                </details>
               ))}
             </div>
           </div>
@@ -343,15 +445,16 @@ export default function HomePage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400">资源中心</p>
                 <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">资讯 · 实践 · 资料 · 帮助</h2>
                 <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
-                  为企业提供项目管理、数字化经营知识；下列入口名称与官网导航一致，便于你后续替换为真实链接。
+                  与官网资源中心导航一致：持续输出方法论、实践案例与可下载资料，支撑企业项目管理与数字化经营能力建设。
                 </p>
-                <ul className="mt-6 flex flex-wrap gap-2">
-                  {resourceHub.map((r) => (
+                <ul className="mt-6 space-y-2">
+                  {resourceHubItems.map((r) => (
                     <li
-                      key={r}
-                      className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+                      key={r.name}
+                      className="flex flex-col rounded-xl border border-slate-200 bg-slate-50/80 px-3 py-2 text-xs dark:border-white/10 dark:bg-white/5"
                     >
-                      {r}
+                      <span className="font-medium text-slate-800 dark:text-slate-100">{r.name}</span>
+                      <span className="text-slate-500 dark:text-slate-400">{r.hint}</span>
                     </li>
                   ))}
                 </ul>
@@ -412,7 +515,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <p className="mt-6 text-sm text-slate-500">
-                  公开信息中的商务入口包括：预约咨询、预约演示、免费下载、扫码试用等，你可在此区块接入表单或企业微信。
+                  提交预约或致电后，顾问将结合行业与项目形态安排演示或发送试用与资料包；支持私有化与集成评估。
                 </p>
               </div>
               <div className="rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white to-slate-50 p-8 shadow-md dark:border-white/10 dark:from-white/[0.08] dark:to-transparent dark:shadow-soft">
