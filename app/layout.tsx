@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 import { siteMeta } from "@/lib/site-content";
 
 const sans = Noto_Sans_SC({
@@ -28,8 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={sans.variable}>
-      <body className="min-h-screen font-sans">{children}</body>
+    <html lang="zh-CN" className={sans.variable} suppressHydrationWarning>
+      <body className="min-h-screen font-sans">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

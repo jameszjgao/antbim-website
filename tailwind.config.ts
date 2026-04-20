@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -41,6 +42,8 @@ const config: Config = {
       backgroundImage: {
         "grid-fade":
           "linear-gradient(to bottom, rgba(12,15,20,0) 0%, rgba(12,15,20,0.85) 100%), radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
+        "grid-fade-light":
+          "linear-gradient(to bottom, rgba(248,250,252,0) 0%, rgba(241,245,249,0.96) 100%), radial-gradient(circle at 1px 1px, rgba(15,23,42,0.07) 1px, transparent 0)",
       },
     },
   },
