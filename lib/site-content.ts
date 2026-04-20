@@ -13,7 +13,7 @@ export const navPrimary = [
   { label: "产品", href: "#product" },
   { label: "解决方案", href: "#solutions" },
   { label: "客户案例", href: "#cases" },
-  { label: "资源中心", href: "#resources" },
+  { label: "资讯中心", href: "#resources" },
   { label: "关于我们", href: "#about" },
 ] as const;
 

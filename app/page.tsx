@@ -10,11 +10,9 @@ import {
   Sparkles,
   Users2,
 } from "lucide-react";
-import { clsx } from "clsx";
-import { HeroBanner } from "@/components/HeroBanner";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { antbimAsset, caseCardImages, featureBlockImages } from "@/lib/antbim-assets";
+import { antbimAsset, caseCardImages } from "@/lib/antbim-assets";
 import {
   aboutPoints,
   bottomStats,
@@ -49,52 +47,60 @@ export default function HomePage() {
       <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[min(88vh,820px)] overflow-hidden bg-slate-50 dark:bg-ink-950">
-          <HeroBanner />
-          <div className="relative z-[2] mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 sm:pt-14 lg:pb-24 lg:pt-16">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-500/35 bg-brand-500/15 px-3 py-1 text-xs font-medium text-brand-800 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-100">
-              <Sparkles className="h-3.5 w-3.5" />
-              多年领跑平台项目管理类目
+        {/* Hero — 与官网首屏结构：浅底、水印、单卡片主图、CTA 在图下 */}
+        <section className="relative overflow-hidden bg-[#f5f6f8] dark:bg-ink-950">
+          <p
+            className="pointer-events-none absolute -left-4 top-10 select-none whitespace-nowrap font-bold leading-none tracking-tight text-slate-200/90 dark:text-white/[0.04] sm:top-16"
+            style={{ fontSize: "clamp(4.5rem, 18vw, 11rem)" }}
+            aria-hidden
+          >
+            数字化经营
+          </p>
+          <div
+            className="pointer-events-none absolute -right-24 top-32 h-[28rem] w-[28rem] rounded-full bg-gradient-to-br from-brand-400/25 to-transparent blur-3xl dark:from-brand-500/15"
+            aria-hidden
+          />
+          <div className="relative z-[1] mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:pb-20">
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-900 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-100">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-brand-600 dark:text-brand-300" />
+              多年领跑项目管理赛道
             </div>
-            <h1 className="mt-6 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl dark:text-white">
-              蚂蚁分工
-              <span className="block text-slate-600 sm:mt-1 sm:inline sm:before:content-['·_'] dark:text-slate-300">
-                助力管理体系流程落地的项目管理系统
-              </span>
+            <h1 className="mt-5 max-w-4xl text-2xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-tight dark:text-white">
+              蚂蚁分工 · 助力管理体系流程落地的项目管理系统
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg dark:text-slate-300">
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
               帮企业经营好源源不断的项目：从商机到交付、从进度到成本、从质量风险到知识沉淀，一套平台覆盖项目型业务全链路。
             </p>
 
-            <div className="relative mt-8 flex justify-center">
+            <div className="mt-8 rounded-2xl border border-slate-200/90 bg-white p-3 shadow-[0_12px_48px_-16px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-ink-900/90 dark:shadow-none sm:p-5 lg:p-6">
               <Image
                 src={antbimAsset.brandHeroIllustration}
-                alt="蚂蚁分工 · 项目型 ERP 与智慧经营"
-                width={1600}
-                height={952}
-                className="h-auto w-full max-w-4xl object-contain drop-shadow-sm dark:drop-shadow-md"
+                alt="蚂蚁分工项目 ERP — 订单、进度、成本、预算、质量、资源、知识库能力一览"
+                width={4040}
+                height={2404}
+                className="mx-auto h-auto w-full max-w-[1100px] object-contain"
                 priority
+                sizes="(max-width: 1200px) 100vw, 1100px"
               />
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#cta"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-md transition hover:bg-brand-400 dark:shadow-glow"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400 dark:shadow-glow"
               >
                 扫码试用 / 预约演示
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#product"
-                className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm backdrop-blur-sm transition hover:bg-white dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:bg-slate-50 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
               >
                 了解产品能力
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-2">
               {heroHighlights.map((t) => (
                 <span
                   key={t}
@@ -169,60 +175,37 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="mt-12 space-y-14">
+            <div className="mt-12 space-y-12">
               {featureBlocks.map((block, idx) => (
                 <div
                   key={block.id}
-                  className="rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white to-slate-50/50 p-6 shadow-sm sm:p-10 dark:border-white/10 dark:from-white/[0.04] dark:to-transparent dark:shadow-none"
+                  className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm sm:p-8 dark:border-white/10 dark:bg-ink-950/40"
                 >
-                  <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-                    <div
-                      className={clsx(
-                        "lg:col-span-5",
-                        idx % 2 === 1 && "lg:order-2",
-                      )}
-                    >
+                  <div className="flex flex-wrap items-end justify-between gap-4 border-b border-slate-100 pb-5 dark:border-white/5">
+                    <div className="max-w-2xl">
                       <p className="text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300/90">
                         {block.eyebrow}
                       </p>
-                      <h3 className="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl dark:text-white">{block.title}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-400">
+                      <h3 className="mt-1.5 text-xl font-semibold text-slate-900 sm:text-2xl dark:text-white">{block.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base dark:text-slate-400">
                         {block.lead}
                       </p>
-                      <div className="mt-6 hidden text-6xl font-bold text-slate-200/90 lg:block dark:text-white/[0.04]">
-                        {String(idx + 1).padStart(2, "0")}
-                      </div>
                     </div>
-                    <div
-                      className={clsx(
-                        "lg:col-span-7",
-                        idx % 2 === 1 && "lg:order-1",
-                      )}
-                    >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 dark:border-white/10 dark:bg-ink-900/50">
-                        <Image
-                          src={featureBlockImages[idx]}
-                          alt=""
-                          fill
-                          className="object-contain p-2 sm:p-4"
-                          sizes="(max-width:1024px) 100vw, 58vw"
-                        />
-                      </div>
-                    </div>
-                    <div className="lg:col-span-12">
-                      <ul className="grid gap-3 sm:grid-cols-2">
-                        {block.bullets.map((b) => (
-                          <li
-                            key={b}
-                            className="flex items-start gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 dark:border-white/5 dark:bg-ink-950/50 dark:text-slate-200"
-                          >
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" />
-                            <span>{b}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <span className="text-5xl font-bold tabular-nums text-slate-100 dark:text-white/[0.06]">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
                   </div>
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {block.bullets.map((b) => (
+                      <li
+                        key={b}
+                        className="flex items-start gap-2 rounded-xl border border-slate-100 bg-slate-50/80 px-3 py-2.5 text-sm text-slate-800 dark:border-white/5 dark:bg-ink-900/50 dark:text-slate-200"
+                      >
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-400" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -253,15 +236,6 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="lg:col-span-5">
-                <div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-ink-900/40">
-                  <Image
-                    src={antbimAsset.erpSection}
-                    alt="蚂蚁分工项目 ERP"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width:1024px) 100vw, 40vw"
-                  />
-                </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   {[
                     { icon: BarChart3, t: "经营驾驶舱", d: "项目利润、预算执行、风险预警一屏掌握" },

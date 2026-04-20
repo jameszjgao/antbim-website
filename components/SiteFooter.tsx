@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { Phone } from "lucide-react";
 import { footerLinks, siteMeta } from "@/lib/site-content";
-import { antbimAsset } from "@/lib/antbim-assets";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function SiteFooter() {
   return (
@@ -12,21 +11,10 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3">
-              <Image
-                src={antbimAsset.logoHeader}
-                alt="蚂蚁分工"
-                width={100}
-                height={86}
-                className="h-11 w-auto object-contain object-left"
-              />
-              <div>
-                <div className="text-lg font-semibold text-slate-900 dark:text-white">蚂蚁分工</div>
-                <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                  灵巧便捷，协作高效。帮企业经营好源源不断的项目。
-                </p>
-              </div>
-            </div>
+            <BrandLogo size="footer" />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              灵巧便捷，协作高效。帮企业经营好源源不断的项目。
+            </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={`tel:${siteMeta.phone.replace(/-/g, "")}`}

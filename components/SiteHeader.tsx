@@ -7,6 +7,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
 import { navPrimary, siteMeta } from "@/lib/site-content";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { BrandLogo } from "@/components/BrandLogo";
 import { antbimAsset } from "@/lib/antbim-assets";
 
 export function SiteHeader() {
@@ -24,27 +25,14 @@ export function SiteHeader() {
     <header
       className={clsx(
         "sticky top-0 z-50 border-b backdrop-blur-xl transition-colors",
-        "border-slate-200/80 bg-white/85 dark:border-white/5 dark:bg-ink-950/70",
+        "border-slate-200/80 bg-white/90 dark:border-white/5 dark:bg-ink-950/70",
         scrolled && "bg-white/95 shadow-sm dark:bg-ink-950/90 dark:shadow-none",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5">
-          <Image
-            src={antbimAsset.logoHeader}
-            alt="蚂蚁分工"
-            width={100}
-            height={86}
-            className="h-9 w-auto object-contain object-left"
-            priority
-          />
-          <div className="hidden leading-tight sm:block">
-            <div className="text-sm font-semibold tracking-wide text-slate-900 dark:text-white">蚂蚁分工</div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400">项目管理系统</div>
-          </div>
-        </Link>
+      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+        <BrandLogo />
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-0.5 lg:flex">
           {navPrimary.map((item) => (
             <a
               key={item.href}
@@ -73,16 +61,16 @@ export function SiteHeader() {
           </a>
           <a
             href="#cta"
-            className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-ink-950 shadow-md transition hover:bg-brand-400 dark:shadow-glow"
+            className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400 dark:shadow-glow"
           >
             预约演示
           </a>
-          <button
-            type="button"
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/5"
+          <Link
+            href="#cta"
+            className="px-2 py-2 text-sm text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
           >
             注册 / 登录
-          </button>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -99,7 +87,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <div className="border-t border-slate-200 bg-white/98 px-4 py-4 dark:border-white/5 dark:bg-ink-950/95 md:hidden">
+        <div className="border-t border-slate-200 bg-white px-4 py-4 dark:border-white/5 dark:bg-ink-950/95 lg:hidden">
           <div className="flex flex-col gap-1">
             {navPrimary.map((item) => (
               <a

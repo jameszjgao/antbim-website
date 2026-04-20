@@ -3,14 +3,10 @@
  * 仅用于重设计演示；正式商用请替换为自有授权资源。
  */
 export const antbimAsset = {
+  /** 官网 CMS 导出的横版标识，可作备用；顶栏主识别见 BrandLogo 组件 */
   logoHeader: "/assets/antbim/logo-header.jpg",
+  /** 首页主视觉：项目 ERP 能力辐射图（与官网首屏大图一致） */
   brandHeroIllustration: "/assets/antbim/brand-hero-illustration.png",
-  banners: [
-    "/assets/antbim/banner-slide-1.webp",
-    "/assets/antbim/banner-slide-2.webp",
-    "/assets/antbim/banner-slide-3.webp",
-    "/assets/antbim/banner-slide-4.webp",
-  ],
   featureProjectManagement: "/assets/antbim/feature-project-management.png",
   featureStrategy: "/assets/antbim/feature-strategy.png",
   featureTaskCollab: "/assets/antbim/feature-task-collab.png",
@@ -22,14 +18,6 @@ export const antbimAsset = {
   caseQingyan: "/assets/antbim/case-qingyan.png",
   caseXinguangle: "/assets/antbim/case-xinguangle.png",
 } as const;
-
-export const featureBlockImages = [
-  antbimAsset.featureProjectManagement,
-  antbimAsset.featureStrategy,
-  antbimAsset.featureTaskCollab,
-  antbimAsset.featureSuiteDemo,
-  antbimAsset.featureAnalytics,
-] as const;
 
 export const caseCardImages = [
   antbimAsset.caseKelianying,
