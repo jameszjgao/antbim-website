@@ -25,7 +25,9 @@ import {
   heroPrimaryCopy,
   heroSecondaryCopy,
   heroSupportingLine,
+  conversion,
   industryTags,
+  legacyPublicPaths,
   midFunnelCta,
   news,
   officialBrandStory,
@@ -87,14 +89,14 @@ export default function HomePage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="#cta"
+                href={legacyPublicPaths.messageBoard}
                 className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400 dark:shadow-glow"
               >
                 扫码试用 / 预约演示
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#product"
+                href={legacyPublicPaths.product}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:bg-slate-50 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
               >
                 了解产品能力
@@ -249,13 +251,13 @@ export default function HomePage() {
             </div>
             <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:shrink-0">
               <a
-                href="#cta"
+                href={conversion.demo.href}
                 className="inline-flex items-center justify-center rounded-full bg-brand-500 px-6 py-2.5 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400"
               >
                 预约演示
               </a>
               <a
-                href="#cta"
+                href={conversion.download.href}
                 className="inline-flex items-center justify-center rounded-full border border-slate-800/15 bg-white/90 px-6 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
               >
                 免费下载
@@ -279,11 +281,11 @@ export default function HomePage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                   {erpSection.ctas.map((c) => (
                     <a
-                      key={c}
-                      href="#cta"
+                      key={c.label}
+                      href={c.href}
                       className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-800 transition hover:border-brand-400/60 hover:bg-slate-50 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:border-brand-400/50 dark:hover:bg-white/10"
                     >
-                      {c}
+                      {c.label}
                     </a>
                   ))}
                 </div>
@@ -374,7 +376,7 @@ export default function HomePage() {
                 </p>
               </div>
               <a
-                href="#resources"
+                href={legacyPublicPaths.testimonials}
                 className="text-sm font-medium text-brand-700 hover:text-brand-600 dark:text-brand-300 dark:hover:text-brand-200"
               >
                 更多客户案例 →
@@ -437,8 +439,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Resources / News */}
-        <section className="scroll-mt-20 border-t border-slate-200 bg-white py-16 dark:border-white/5 dark:bg-transparent sm:py-20">
+        {/* Resources / News — 保留 #resources 锚点便于旧版单页内链 */}
+        <section
+          id="resources"
+          className="scroll-mt-20 border-t border-slate-200 bg-white py-16 dark:border-white/5 dark:bg-transparent sm:py-20"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-4">
@@ -530,24 +535,24 @@ export default function HomePage() {
                   {siteMeta.phone}
                 </a>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  <button
-                    type="button"
-                    className="rounded-xl bg-brand-500 py-3 text-sm font-semibold text-ink-950 transition hover:bg-brand-400"
+                  <a
+                    href={conversion.demo.href}
+                    className="rounded-xl bg-brand-500 py-3 text-center text-sm font-semibold text-ink-950 transition hover:bg-brand-400"
                   >
                     预约演示
-                  </button>
-                  <button
-                    type="button"
-                    className="rounded-xl border border-slate-300 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+                  </a>
+                  <a
+                    href={conversion.consult.href}
+                    className="rounded-xl border border-slate-300 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
                   >
                     预约咨询
-                  </button>
-                  <button
-                    type="button"
-                    className="rounded-xl border border-slate-300 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5 sm:col-span-2"
+                  </a>
+                  <a
+                    href={conversion.download.href}
+                    className="rounded-xl border border-slate-300 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5 sm:col-span-2"
                   >
                     免费下载 / 扫码试用
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

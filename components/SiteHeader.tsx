@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
-import { navPrimary, siteMeta } from "@/lib/site-content";
+import { conversion, navPrimary, siteMeta } from "@/lib/site-content";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { BrandLogo } from "@/components/BrandLogo";
 import { antbimAsset } from "@/lib/antbim-assets";
@@ -60,13 +60,13 @@ export function SiteHeader() {
             {siteMeta.phone}
           </a>
           <a
-            href="#cta"
+            href={conversion.demo.href}
             className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-ink-950 shadow-sm transition hover:bg-brand-400 dark:shadow-glow"
           >
             预约演示
           </a>
           <Link
-            href="#cta"
+            href={conversion.login.href}
             className="px-2 py-2 text-sm text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
           >
             注册 / 登录
@@ -109,7 +109,7 @@ export function SiteHeader() {
               {siteMeta.phone}
             </a>
             <a
-              href="#cta"
+              href={conversion.demo.href}
               className="rounded-xl bg-brand-500 py-2 text-center text-sm font-semibold text-ink-950"
               onClick={() => setOpen(false)}
             >

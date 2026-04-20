@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync-legacy-paths": "node scripts/sync-legacy-paths.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

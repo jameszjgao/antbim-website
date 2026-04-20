@@ -21,12 +21,28 @@ export const siteMeta = {
   icp: "陕ICP备17022787号-1",
 } as const;
 
+/**
+ * 顶栏与官网栏目 1:1：path 与 sitemap / 旧站公开链接一致（含大小写，如 `/Solution/`）。
+ * 详情页与专题页由 middleware 在迁移期回源旧站；首页 `/` 由 Next 新营销页承接。
+ */
+export const legacyPublicPaths = {
+  product: "/product/",
+  solution: "/Solution/",
+  testimonials: "/testimonials/",
+  news: "/news/",
+  /** 关于我们 — 与旧站导航一致 */
+  about: "/h-col-102.html",
+  messageBoard: "/h-msgBoard.html",
+  login: "/h-login.html",
+  signup: "/h-signup.html",
+} as const;
+
 export const navPrimary = [
-  { label: "产品", href: "#product" },
-  { label: "解决方案", href: "#solutions" },
-  { label: "客户案例", href: "#cases" },
-  { label: "资讯中心", href: "#resources" },
-  { label: "关于我们", href: "#about" },
+  { label: "产品", href: legacyPublicPaths.product },
+  { label: "解决方案", href: legacyPublicPaths.solution },
+  { label: "客户案例", href: legacyPublicPaths.testimonials },
+  { label: "资讯中心", href: legacyPublicPaths.news },
+  { label: "关于我们", href: legacyPublicPaths.about },
 ] as const;
 
 /** 首屏辅助口号 — 与官网「帮企业…」一致 */
@@ -41,12 +57,13 @@ export const heroSecondaryCopy =
   "以流程规范、进度效率、质量评审、文档留痕与跨部门协作为抓手，助力企业在研发生产中落实体系与标准化、自动化，提升交付效率与客户满意度。";
 
 /** 转化主路径（与顶栏按钮语义一致，便于埋点 id） */
+/** 转化入口尽量落到旧站已存在页面；精确到「演示 / 下载」独立 URL 时可在后续对照原站 HTML 再拆分 */
 export const conversion = {
-  demo: { label: "预约演示", href: "#cta" },
-  trial: { label: "扫码试用", href: "#cta" },
-  consult: { label: "预约咨询", href: "#cta" },
-  download: { label: "免费下载", href: "#cta" },
-  login: { label: "注册 / 登录", href: "#cta" },
+  demo: { label: "预约演示", href: legacyPublicPaths.messageBoard },
+  trial: { label: "扫码试用", href: legacyPublicPaths.signup },
+  consult: { label: "预约咨询", href: legacyPublicPaths.messageBoard },
+  download: { label: "免费下载", href: legacyPublicPaths.messageBoard },
+  login: { label: "注册 / 登录", href: legacyPublicPaths.login },
 } as const;
 
 export const heroHighlights = [
@@ -185,7 +202,11 @@ export const erpSection = {
   title: "蚂蚁分工项目 ERP",
   body: "覆盖项目型业务经营 7 大场景，融汇 5 大过程管理模型精髓，专注项目型企业的业财融合，帮助企业实现业务经营一体化。",
   marketingHook: "适合订单交付型、项目制造型与多项目并行企业：把合同、交付、成本与利润串成一条链。",
-  ctas: ["预约演示", "预约咨询", "免费下载"] as const,
+  ctas: [
+    { label: "预约演示", href: legacyPublicPaths.messageBoard },
+    { label: "预约咨询", href: legacyPublicPaths.messageBoard },
+    { label: "免费下载", href: legacyPublicPaths.messageBoard },
+  ] as const,
 };
 
 /** 行业标签 — 摘自官网解决方案页公开行业词 */

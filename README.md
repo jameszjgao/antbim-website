@@ -2,6 +2,17 @@
 
 **蚂蚁分工**官方营销推广落地页（Next.js 14 + Tailwind），用于**后续直接替换** [antbim.com](https://www.antbim.com/) 现有站点。文案与信息架构依据官网公开 HTML（首页 meta、首屏模块、`/Solution/` 等）归纳并做**转化向**编排；`public/assets/antbim/` 内素材已由运营方授权使用。
 
+## 1:1 栏目与 URL（不合并、不省略）
+
+- **路径注册表**：`lib/migration/legacy-paths.ts` 由 **`https://www.antbim.com/sitemap.xml`** 生成（当前 **668** 条，不含首页 `/`）。sitemap 未收录但线上存在的入口（如 **`/wxGetOpenId.jsp`**）在 **`scripts/sync-legacy-paths.mjs`** 的 `EXTRA_PATHNAMES` 中手工补全后执行 **`npm run sync-legacy-paths`** 再提交。
+- **首页 `/`**：由本仓库 **`app/page.tsx`** 承接（新营销首页），**不参与**旧站代理。
+- **其余已登记 path**：由 **`middleware.ts`** 在开启代理时 **rewrite** 到 **`LEGACY_UPSTREAM_ORIGIN`** 对应路径，保证外链与搜索引擎收录的 URL 继续可访问。
+- **顶栏导航**：`lib/site-content.ts` 中 **`legacyPublicPaths` / `navPrimary`** 使用与旧站一致的 path（注意 **`/Solution/`** 大小写）。
+- **⚠️ 防自指循环**：当 **antbim.com** 的 DNS 已指向 Vercel 本部署时，`LEGACY_UPSTREAM_ORIGIN` **不得**再设为 `https://www.antbim.com`（会请求自己又 rewrite 自己）。迁移期应指向**仍托管旧 HTML 的源**（例如旧主机 IP/临时域名/只读镜像），待各 URL 均在 Next 内实现后再关代理。
+- **环境变量**（见仓库根目录 **`.env.example`**）：
+  - **`LEGACY_PROXY_ENABLED`**：设为 `1` 或 `true` 时启用回源。
+  - **`LEGACY_UPSTREAM_ORIGIN`**：旧站源站 origin，无尾斜杠，例如 `https://legacy-mirror.example.com`。
+
 ## 设计目标（营销优先）
 
 - **首屏**：信任角标 + 双段价值陈述 + **单卡片 ERP 能力图** + 主/次 CTA + 社会证明数据条。
