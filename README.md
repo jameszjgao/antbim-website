@@ -45,16 +45,34 @@ npm run start
 
 ## 发布到 Vercel
 
-1. 在 [Vercel](https://vercel.com/) 新建 Project，Git 仓库指向本目录所在仓库（或将 `antbim-website` 作为 monorepo 子目录并设置 **Root Directory** 为 `antbim-website`）。
-2. Framework Preset 选择 **Next.js**，Node 版本默认即可。
-3. 首次部署完成后，在 Project → Settings → Domains 绑定自有域名（可选）。
+### 方式 A — 连接 GitHub（推荐，可自动部署）
 
-命令行方式（需已登录 `vercel` CLI）：
+1. 先将本仓库推送到 GitHub（见上文「推送到 GitHub」）。
+2. 登录 [Vercel Dashboard](https://vercel.com/dashboard) → **Add New…** → **Project** → **Import** 你的 `antbim-website` 仓库。
+3. Framework 选 **Next.js**，**Root Directory** 若整库就是本项目则留空；若在 monorepo 子目录则填 `antbim-website`。
+4. 点 **Deploy**。之后每次 `push` 到默认分支会自动构建。
+
+### 方式 B — Vercel CLI（本机一次性登录）
 
 ```bash
 cd antbim-website
-npx vercel --prod
+npx vercel login          # 浏览器完成授权
+npx vercel                # 首次：按提示 Link 到团队/项目
+npx vercel --prod         # 生产环境
 ```
+
+首次 `npx vercel` 会问是否关联现有 Project；选创建新 Project 即可。生产域名形如 `https://antbim-website-xxx.vercel.app`（以 CLI 输出为准）。
+
+### 方式 C — 仅 Token（CI / 无浏览器环境）
+
+在 Vercel → **Account Settings** → **Tokens** 创建 Token，然后：
+
+```bash
+cd antbim-website
+VERCEL_TOKEN=你的token npx vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+```
+
+（勿将 Token 提交进仓库；在 GitHub Actions 里用 **Secrets** 注入。）
 
 ## 说明
 
