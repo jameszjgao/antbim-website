@@ -30,7 +30,7 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <BrandLogo />
+        <BrandLogo priority />
 
         <nav className="hidden items-center gap-0.5 lg:flex">
           {navPrimary.map((item) => (
