@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
 import { conversion, navPrimary, siteMeta } from "@/lib/site-content";
@@ -65,12 +64,13 @@ export function SiteHeader() {
           >
             预约演示
           </a>
-          <Link
+          <a
             href={conversion.login.href}
             className="px-2 py-2 text-sm text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+            rel="noopener noreferrer"
           >
             注册 / 登录
-          </Link>
+          </a>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -114,6 +114,14 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
             >
               预约演示
+            </a>
+            <a
+              href={conversion.login.href}
+              className="rounded-xl border border-slate-200 py-2 text-center text-sm font-medium text-slate-800 dark:border-white/10 dark:text-slate-200"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+            >
+              注册 / 登录
             </a>
           </div>
         </div>

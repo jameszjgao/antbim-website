@@ -8,6 +8,9 @@
 export const officialBrandStory =
   "蚂蚁分工为易协云旗下产品，致力于为企业提供管理体系流程落地的项目管理产品及解决方案。从流程规范管理、进度效率管理、质量评审管理、文档记录管理以及跨部门协作等方面，助力企业在研发生产中严格遵循体系认证规范，实现业务流程标准化和自动化，高效落实体系，提升产品质量和项目交付效率，让客户持续满意。";
 
+/** 正式注册 / 登录（独立子域），与顶栏「注册 / 登录」一致 */
+export const authAppLoginUrl = "https://login.antbim.cn/login" as const;
+
 export const siteMeta = {
   /** 浏览器标题 — 与官网 title 对齐 */
   title: "蚂蚁分工-助力管理体系流程落地的项目管理系统",
@@ -33,7 +36,8 @@ export const legacyPublicPaths = {
   /** 关于我们 — 与旧站导航一致 */
   about: "/h-col-102.html",
   messageBoard: "/h-msgBoard.html",
-  login: "/h-login.html",
+  /** 旧站营销页登录入口（sitemap 仍保留；顶栏 CTA 用 authAppLoginUrl） */
+  legacyMarketingLogin: "/h-login.html",
   signup: "/h-signup.html",
 } as const;
 
@@ -63,7 +67,7 @@ export const conversion = {
   trial: { label: "扫码试用", href: legacyPublicPaths.signup },
   consult: { label: "预约咨询", href: legacyPublicPaths.messageBoard },
   download: { label: "免费下载", href: legacyPublicPaths.messageBoard },
-  login: { label: "注册 / 登录", href: legacyPublicPaths.login },
+  login: { label: "注册 / 登录", href: authAppLoginUrl },
 } as const;
 
 export const heroHighlights = [
